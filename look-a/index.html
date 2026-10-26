@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Timberside Chalet · Lodge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #f4efe4; --card: #fffaf0; --ink: #23302a; --muted: #6a6f63; --green: #2f4a3a; --rust: #a5552e; --line: #ded5c2; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #161b17; --card: #1e2520; --ink: #ece6d8; --muted: #a3a593; --green: #8fb39a; --rust: #d98a5f; --line: #2e372f; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 Inter, system-ui, sans-serif; }
+    header { background: var(--green); color: #f4efe4; padding: 56px 20px 40px; text-align: center; }
+    header .mark { font-size: 2rem; margin-bottom: 6px; }
+    header h1 { font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 2.3rem; line-height: 1.1; margin: 0; }
+    header p { margin: 10px auto 0; max-width: 30ch; opacity: .85; }
+    .tag { display: inline-block; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+           border: 1px solid currentColor; border-radius: 99px; padding: 2px 10px; margin-bottom: 18px; opacity: .8; }
+    main { max-width: 640px; margin: -20px auto 0; padding: 0 16px 56px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; margin-bottom: 14px; }
+    h2 { font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 1.35rem; margin: 0 0 12px; color: var(--green); }
+    .row { display: flex; gap: 12px; padding: 8px 0; border-top: 1px dashed var(--line); }
+    .row:first-of-type { border-top: 0; }
+    .row b { min-width: 84px; color: var(--rust); font-weight: 600; }
+    .sos h2 { color: var(--rust); }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="tag">Look A · Lodge</span>
+    <div class="mark">🌲</div>
+    <h1>Timberside Chalet</h1>
+    <p>Dana &amp; I are so glad you're here. Here's everything for the house and the area.</p>
+  </header>
+  <main>
+    <div class="card">
+      <h2>The basics</h2>
+      <div class="row"><b>Entry</b><span>Keypad on the lower-level double doors. Your code is in your Airbnb messages.</span></div>
+      <div class="row"><b>Wi-Fi</b><span><strong>timberside-guest</strong>, no password</span></div>
+      <div class="row"><b>Check-out</b><span>10am on the day your booking ends</span></div>
+    </div>
+    <div class="card sos">
+      <h2>Emergency? Dial 911</h2>
+      <div class="row"><b>Nearest ER</b><span>Springfield Hospital, about 30 min · 802-885-2151</span></div>
+    </div>
+  </main>
+</body>
+</html>
