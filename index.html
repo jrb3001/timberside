@@ -30,7 +30,17 @@
     nav li { break-inside: avoid; padding: 3px 0; }
     nav a { text-decoration: none; color: var(--ink); }
     nav a span { font-family: "Playfair Display", serif; color: var(--rust); margin-right: 8px; }
-    section { padding: 26px 0; border-bottom: 1px solid var(--soft); scroll-margin-top: 8px; }
+    section { padding: 26px 0; border-bottom: 1px solid var(--soft); scroll-margin-top: 60px; }
+    /* Sticky section bar: one tap to any section, current one highlighted. */
+    .bar { position: sticky; top: 0; z-index: 5; margin: 18px -22px 0; padding: 10px 22px;
+           background: var(--bg); border-bottom: 1px solid var(--soft);
+           display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+    .bar::-webkit-scrollbar { display: none; }
+    .bar a { flex: none; text-decoration: none; color: var(--ink); font-size: .88rem; font-weight: 600;
+             border: 1px solid var(--soft); border-radius: 99px; padding: 5px 12px; }
+    .bar a span { font-family: "Playfair Display", serif; font-weight: 600; color: var(--rust); margin-right: 5px; }
+    .bar a.on { background: var(--green); border-color: var(--green); color: var(--bg); }
+    .bar a.on span { color: var(--bg); }
     .num { font-family: "Playfair Display", serif; color: var(--rust); font-size: .95rem; }
     h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 600; font-size: 1.6rem; margin: 2px 0 4px; color: var(--green); }
     .intro { font-family: "Playfair Display", Georgia, serif; font-style: italic; color: var(--muted); margin: 0 0 14px; }
@@ -68,6 +78,17 @@
         <li><a href="#checkout"><span>07</span>Checking out</a></li>
         <li><a href="#emergency"><span>08</span>Emergency</a></li>
       </ol>
+    </nav>
+
+    <nav class="bar" aria-label="Jump to section">
+      <a href="#basics"><span>01</span>Basics</a>
+      <a href="#house"><span>02</span>House</a>
+      <a href="#winter"><span>03</span>Winter</a>
+      <a href="#eat"><span>04</span>Eat</a>
+      <a href="#shop"><span>05</span>Shop</a>
+      <a href="#summer"><span>06</span>Summer</a>
+      <a href="#checkout"><span>07</span>Check-out</a>
+      <a href="#emergency"><span>08</span>Emergency</a>
     </nav>
 
     <section id="basics">
@@ -240,5 +261,27 @@
       Share your photos: <a href="https://www.instagram.com/timbersidechalet/">@timbersidechalet</a> · #timbersidechalet
     </footer>
   </main>
+  <script>
+    // Highlight the section you're reading and keep its chip in view.
+    const bar = document.querySelector('.bar');
+    const chips = new Map([...bar.querySelectorAll('a')].map(a => [a.getAttribute('href').slice(1), a]));
+    let current = null;
+    function mark() {
+      let id = null;
+      for (const s of document.querySelectorAll('main section')) {
+        if (s.getBoundingClientRect().top <= 80) id = s.id;
+      }
+      if (id === current) return;
+      current = id;
+      chips.forEach(a => a.classList.remove('on'));
+      const chip = id && chips.get(id);
+      if (chip) {
+        chip.classList.add('on');
+        bar.scrollTo({ left: chip.offsetLeft - bar.clientWidth / 2 + chip.clientWidth / 2, behavior: 'smooth' });
+      }
+    }
+    addEventListener('scroll', mark, { passive: true });
+    mark();
+  </script>
 </body>
 </html>
