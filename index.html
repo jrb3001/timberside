@@ -4,50 +4,239 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="light dark">
   <title>Timberside Chalet</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #fbfaf7; --ink: #1d1d1b; --muted: #6b6a66; --line: #e6e3dc; --accent: #b8963e; }
+    /* Lodge palette, editorial type. */
+    :root { --bg: #f4efe4; --ink: #23302a; --muted: #6a6f63; --green: #2f4a3a; --rust: #a5552e; --rule: #2f4a3a; --soft: #ded5c2; }
     @media (prefers-color-scheme: dark) {
-      :root { --bg: #151514; --ink: #f2f0ea; --muted: #a3a19a; --line: #2c2b28; --accent: #d4b25c; }
+      :root { --bg: #161b17; --ink: #ece6d8; --muted: #a3a593; --green: #8fb39a; --rust: #d98a5f; --rule: #8fb39a; --soft: #2e372f; }
     }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--ink);
-           font: 17px/1.55 "Space Grotesk", system-ui, sans-serif; }
-    main { max-width: 640px; margin: 0 auto; padding: 48px 20px 64px; }
-    h1 { font-size: 2.2rem; line-height: 1.1; margin: 0 0 8px; letter-spacing: -0.02em; }
-    .sub { color: var(--muted); margin: 0 0 36px; }
-    section { border-top: 1px solid var(--line); padding: 24px 0; }
-    h2 { font-size: 1.15rem; margin: 0 0 10px; }
-    dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; }
-    dt { color: var(--muted); }
-    dd { margin: 0; }
-    .tag { display: inline-block; font-size: 0.8rem; color: var(--accent);
-           border: 1px solid var(--accent); border-radius: 99px; padding: 2px 10px; margin-bottom: 20px; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 "Work Sans", system-ui, sans-serif; }
+    main { max-width: 600px; margin: 0 auto; padding: 44px 22px 64px; }
+    a { color: var(--green); text-underline-offset: 3px; }
+    .kicker { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--rust); }
+    h1 { font-family: "Playfair Display", Georgia, serif; font-weight: 600; font-size: 2.8rem; line-height: 1.02;
+         margin: 10px 0 14px; color: var(--green); }
+    .lede { font-family: "Playfair Display", Georgia, serif; font-style: italic; font-size: 1.25rem; color: var(--muted); margin: 0 0 28px; }
+    hr { border: 0; border-top: 2px solid var(--rule); margin: 0; }
+    nav { padding: 18px 0 6px; }
+    nav ol { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 20px; }
+    nav li { break-inside: avoid; padding: 3px 0; }
+    nav a { text-decoration: none; color: var(--ink); }
+    nav a span { font-family: "Playfair Display", serif; color: var(--rust); margin-right: 8px; }
+    section { padding: 26px 0; border-bottom: 1px solid var(--soft); scroll-margin-top: 8px; }
+    .num { font-family: "Playfair Display", serif; color: var(--rust); font-size: .95rem; }
+    h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 600; font-size: 1.6rem; margin: 2px 0 4px; color: var(--green); }
+    .intro { font-family: "Playfair Display", Georgia, serif; font-style: italic; color: var(--muted); margin: 0 0 14px; }
+    h3 { font-size: 1rem; margin: 18px 0 2px; }
+    h3 small { font-weight: 400; color: var(--muted); }
+    p { margin: 4px 0; }
+    .label { font-weight: 600; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--rust); display: block; margin-top: 12px; }
+    ul { margin: 6px 0; padding-left: 20px; }
+    li { margin: 3px 0; }
+    .sos h2 { color: var(--rust); }
+    .big { font-family: "Playfair Display", serif; font-size: 1.35rem; color: var(--rust); margin: 4px 0 8px; }
+    .top { display: inline-block; margin-top: 14px; font-size: .85rem; color: var(--muted); }
+    footer { padding-top: 26px; color: var(--muted); font-size: .9rem; }
   </style>
 </head>
 <body>
   <main>
-    <span class="tag">Test page</span>
-    <h1>Welcome to Timberside Chalet</h1>
-    <p class="sub">Your guide to the house and the area. Dana &amp; I are so glad you're here.</p>
+    <span class="kicker">Guest guide</span>
+    <h1>Timberside<br>Chalet</h1>
+    <p class="lede">A happy little slice of Vermont. Dana &amp; I are so glad you chose to stay here.</p>
+    <hr>
 
-    <section>
+    <nav aria-label="In this guide">
+      <ol>
+        <li><a href="#basics"><span>01</span>The basics</a></li>
+        <li><a href="#house"><span>02</span>Around the house</a></li>
+        <li><a href="#winter"><span>03</span>Winter</a></li>
+        <li><a href="#eat"><span>04</span>Places to eat</a></li>
+        <li><a href="#shop"><span>05</span>Groceries &amp; supplies</a></li>
+        <li><a href="#summer"><span>06</span>Summer &amp; fall</a></li>
+        <li><a href="#checkout"><span>07</span>Checking out</a></li>
+        <li><a href="#emergency"><span>08</span>Emergency</a></li>
+      </ol>
+    </nav>
+
+    <section id="basics">
+      <span class="num">01</span>
       <h2>The basics</h2>
-      <dl>
-        <dt>Entry</dt><dd>Keypad on the lower-level double doors. Your code is in your Airbnb messages.</dd>
-        <dt>Wi-Fi</dt><dd><strong>timberside-guest</strong> (no password)</dd>
-        <dt>Check-out</dt><dd>10am on the day your booking ends</dd>
-      </dl>
+      <p class="intro">We've tried to keep it simple.</p>
+      <span class="label">Getting in</span>
+      <p>Use the keypad on the lower-level double doors. Your code is the last 4 digits of the phone number on your reservation; it's also in your Airbnb messages.</p>
+      <span class="label">Getting here</span>
+      <p>Apple Maps works best. The house is toward the end of a single-lane private dirt road. Park at the top of the main (steep) driveway or in front of the garage.</p>
+      <span class="label">Wi-Fi</span>
+      <p><strong>timberside-guest</strong>, no password. We have surprisingly fast service.</p>
+      <span class="label">Check-in · check-out</span>
+      <p>Check-in from 4pm. Check-out by 10am on the day your booking ends.</p>
+      <span class="label">Questions</span>
+      <p>Message us anytime through Airbnb.</p>
     </section>
 
-    <section>
-      <h2>In an emergency, dial 911</h2>
-      <dl>
-        <dt>Nearest ER</dt><dd>Springfield Hospital, about 30 min · 802-885-2151</dd>
-      </dl>
+    <section id="house">
+      <span class="num">02</span>
+      <h2>Around the house</h2>
+      <p class="intro">How to work the heat, the tub, the music and the fire.</p>
+
+      <h3>Heat</h3>
+      <p>There are 3 thermostats upstairs. We like them at 66–67°, but do you. The family room and loft bathrooms have heated floors on a schedule. The entry and laundry rooms have baseboard heat, each with its own thermostat.</p>
+
+      <h3>Hot tub</h3>
+      <ul>
+        <li>Four clips (one on each corner) hold the cover down. Unlatch all four before you lift it.</li>
+        <li>For jets and lights, tap the screen, then tap <strong>1</strong> followed by <strong>2</strong>.</li>
+        <li>Please change only the temperature and jets/lights.</li>
+        <li>Keep the cover closed when the tub isn't in use. No glass in or around the tub.</li>
+        <li>Super helpful: one capful of booster after each use. It's in the blue bag by the door, red cap.</li>
+      </ul>
+
+      <h3>Cooktop vent</h3>
+      <p>Press the ⇕ button to raise the vent and start the fan. Pick a speed with the small/medium/large fan buttons. Press ⇕ again to stop and lower it.</p>
+
+      <h3>Sonos (music in every room)</h3>
+      <p>Join <strong>timberside-guest</strong>, then download and open the Sonos app to play from your streaming services.</p>
+      <p><strong>Turntable:</strong> in the Sonos app, open the System tab and choose “Line In”. <a href="https://youtu.be/OHbdhVYqIDk?t=228">This video</a> shows how.</p>
+
+      <h3>TVs</h3>
+      <p>The Samsung smart TVs turn on with the remote. Press Home for the apps, and sign in to your own accounts if you like (remember to sign out).</p>
+
+      <h3>Fire pit</h3>
+      <p>Wood is under the tarp behind the garage. Please cover the wood and the pit again when you're done.</p>
+      <a class="top" href="#">↑ Top</a>
     </section>
+
+    <section id="winter">
+      <span class="num">03</span>
+      <h2>Winter</h2>
+      <p class="intro">Snow days, ski days and après.</p>
+
+      <h3>The road</h3>
+      <p>Our road is a single-lane private dirt road, so we recommend AWD or 4WD in winter. Park at the top of the main driveway, in front of the garage, or in the lower area near the Airstream. If it snows while you're here, the plow driver will work around your cars.</p>
+
+      <h3>Skiing nearby</h3>
+      <p><span class="label">Magic Mountain <small>· closest, about 8 min</small></span>Our home mountain. Even if you don't ski Magic, the Black Line Tavern upstairs in the base lodge has a great après scene, live music often, and good bar food.</p>
+      <p><span class="label">Bromley <small>· about 20 min</small></span>On Rt 11 past Londonderry. Stop at Johnny Seesaw's on the way back; it usually has a bonfire going in the afternoon.</p>
+      <p><span class="label">Stratton <small>· a bit over 20 min</small></span>Through Rawsonville. Honeypie is on the way for smashburgers and shakes.</p>
+      <p><span class="label">Okemo <small>· about 25 min</small></span>In Ludlow.</p>
+
+      <h3>Snow days at the house</h3>
+      <ul>
+        <li>The hot tub is at its best when it's snowing. Keep the cover closed in between so it stays hot.</li>
+        <li>The fire pit works year-round; wood is under the tarp behind the garage.</li>
+        <li>The chalet sits on 10 acres with old logging roads to explore, and the land between us and Magic is part of the Vermont Land Trust.</li>
+      </ul>
+      <a class="top" href="#">↑ Top</a>
+    </section>
+
+    <section id="eat">
+      <span class="num">04</span>
+      <h2>Places to eat</h2>
+      <p class="intro">You have a lot of options, but we really like these.</p>
+      <h3>Black Line Tavern <small>· 4 mi, 8 min</small></h3>
+      <p>Upstairs in the Magic Mountain base lodge. Great après scene, live music often, pretty good bar food.</p>
+      <h3>Revival Kitchen <small>· 5 mi, 9 min</small></h3>
+      <p>Halfway between Magic and Londonderry on Rt 11. Relaxed, recently renovated, good-size bar; pizzas, burgers, sandwiches.</p>
+      <h3>New American Grill <small>· 7 mi, 10 min</small></h3>
+      <p>Same plaza as the grocery store in Londonderry. Diverse menu, lots of seating, often live music.</p>
+      <h3>SoLo Farm &amp; Table <small>· 8 mi, 15 min</small></h3>
+      <p>South Londonderry, just off Rt 100. Reservations required (<a href="https://solofarmandtable.com">solofarmandtable.com</a>). Chef's tasting menu a few nights a week; private dining by request.</p>
+      <h3>Honeypie <small>· 11 mi, 20 min</small></h3>
+      <p>In Rawsonville, on the way to Stratton. Great smashburgers, fries and shakes in an old service station. Often has homemade sausages and other provisions to go.</p>
+      <h3>Johnny Seesaw's <small>· 13 mi, 20 min</small></h3>
+      <p>On Rt 11 just before Bromley; reservations recommended (Resy). Old-lodge feel, upscale menu, very good food. Usually a bonfire outside in the afternoon.</p>
+      <h3>Gringo Jack's <small>· 21 mi, 30 min</small></h3>
+      <p>On Main Street in Manchester. Good margaritas, chips and guac; burgers, sandwiches and wraps too.</p>
+      <a class="top" href="#">↑ Top</a>
+    </section>
+
+    <section id="shop">
+      <span class="num">05</span>
+      <h2>Groceries &amp; supplies</h2>
+      <p class="intro">All the basics in Londonderry, about 10 minutes away.</p>
+      <p><span class="label">Groceries</span><strong>Londonderry Village Market</strong>, at Rt 11 &amp; Rt 100. Solid grocery store with a decent beer and wine selection.</p>
+      <p><span class="label">Meat</span><strong>Vermont Butcher Shop</strong>, the red building across from the Maple Leaf Diner on Rt 11. A great local butcher.</p>
+      <p><span class="label">Liquor</span><strong>Londonderry Liquor Store</strong>, sharing space with Jelly's Convenience Store on North Main St.</p>
+      <p><span class="label">Hardware</span><strong>Londonderry Hardware</strong>, in the plaza between the Village Market and New American Grill.</p>
+      <h3>Other good spots</h3>
+      <p><strong>Bromley Market</strong>: red building between Johnny Seesaw's and Bromley. Gas, great sandwiches, good beer, and Vermont cheese and maple.</p>
+      <p><strong>JJ Hapgood's</strong>: general store in Peru (turn right before Johnny Seesaw's). Prepared foods and pop-up specialties.</p>
+      <p><strong>Corner Market Deli</strong>: on the corner in South Londonderry, on the way to Stratton. Good breakfast sandwiches and coffee.</p>
+      <a class="top" href="#">↑ Top</a>
+    </section>
+
+    <section id="summer">
+      <span class="num">06</span>
+      <h2>Summer &amp; fall</h2>
+      <p class="intro">Adventure stuff and relaxy stuff.</p>
+      <h3>Walks &amp; hikes</h3>
+      <ul>
+        <li><strong>Hapgood Pond</strong>: a little farther, but the nicer walk.</li>
+        <li><strong>Lowell Lake State Park</strong>: picnic tables, a car-top boat launch, fishing, and an easy/moderate 3.5-mile loop around the lake.</li>
+        <li><strong>The Long Trail</strong>: a big parking area between Bromley and Manchester gives access to the Appalachian/Long Trail.</li>
+        <li><strong>Putney Mountain</strong>: 926 conserved acres and 15+ miles of trails along the Windmill Hill ridgeline.</li>
+        <li><strong>Right here</strong>: 10 acres with old logging roads to explore.</li>
+      </ul>
+      <h3>Adventure</h3>
+      <ul>
+        <li><strong>Bromley Mountain Adventure Park</strong>: alpine slide, mini golf, climbing wall, bumper boats, waterslide. <a href="https://www.bromley.com/summer-attractions/">bromley.com</a></li>
+        <li><strong>The Battenkill in Manchester</strong>: canoe, kayak or tube with Vermont River Runners on 30 miles of river, fast sections to slow cobble-bottom stretches.</li>
+        <li><strong>Mountain biking</strong>: lift-served at Stratton, Okemo, Killington and others. <a href="https://vmba.org">vmba.org</a> lists more trails, like Grafton and Ascutney.</li>
+      </ul>
+      <h3>Relaxing</h3>
+      <ul>
+        <li><strong>Golf</strong> at Stratton or Fox Run in Ludlow, each about 25 minutes away.</li>
+        <li><strong>Disc golf at Magic Mountain</strong>: 18 holes, June 1 – Oct 31, $10 per person. <a href="https://magicmtn.com/disc-golf/">magicmtn.com</a></li>
+        <li><strong>Rock River</strong>: a wide river bed to set up with chairs and a cooler. A bit of a hike in; the area closest to parking is family friendly (some clothing-optional spots farther down the trail).</li>
+        <li><strong>Taylor Farm</strong>: lots of animals and a nice farm store for all the Vermont goodness.</li>
+      </ul>
+      <a class="top" href="#">↑ Top</a>
+    </section>
+
+    <section id="checkout">
+      <span class="num">07</span>
+      <h2>Checking out</h2>
+      <p class="big">By 10am on the day your booking ends.</p>
+      <p>Before you leave, please:</p>
+      <ul>
+        <li>Put garbage in the cans in the lower level of the garage. <strong>Never leave garbage outside.</strong></li>
+        <li>Take all perishables out of the fridge.</li>
+        <li>Load and start the dishwasher.</li>
+        <li>Strip the linens from used beds.</li>
+        <li>Turn off lights, electronics and appliances.</li>
+        <li>Close and lock all windows and doors.</li>
+        <li><strong>Leave the house the way you found it.</strong></li>
+      </ul>
+      <p style="margin-top:14px">A 5-star review helps us a lot. If anything about your stay was off, message us on Airbnb so we can make it right.</p>
+      <a class="top" href="#">↑ Top</a>
+    </section>
+
+    <section id="emergency" class="sos">
+      <span class="num">08</span>
+      <h2>In an emergency, dial 911</h2>
+      <p>Your street address is in your Airbnb reservation; have it ready for the dispatcher.</p>
+      <span class="label">24-hour ER · about 30 min</span>
+      <p>Springfield Hospital, 25 Ridgewood Road, Springfield VT · <a href="tel:+18028852151">802-885-2151</a></p>
+      <span class="label">Windham Volunteer Fire Co.</span>
+      <p><a href="tel:+18028755332">802-875-5332</a></p>
+      <span class="label">Windham County Sheriff</span>
+      <p><a href="tel:+18023654942">802-365-4942</a></p>
+      <span class="label">Vermont State Police</span>
+      <p><a href="tel:+18027224600">802-722-4600</a></p>
+    </section>
+
+    <footer>
+      Enjoy yourselves, and visit again! — Joel &amp; Dana<br>
+      Share your photos: <a href="https://www.instagram.com/timbersidechalet/">@timbersidechalet</a> · #timbersidechalet
+    </footer>
   </main>
 </body>
 </html>
